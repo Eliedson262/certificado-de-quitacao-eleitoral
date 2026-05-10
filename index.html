@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Certidão de Quitação Eleitoral — Serviços Online</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --blue: #1D5FA6;
+            --blue-dark: #185290;
+            --blue-light: #EBF2FA;
+            --blue-text: #0C447C;
+            --green: #1D9E75;
+            --red: #D85A30;
+            --bg: #F4F6F9;
+            --surface: #FFFFFF;
+            --border: #DDE2EA;
+            --border-focus: #1D5FA6;
+            --text: #1A1F2E;
+            --text-muted: #5A6478;
+            --text-hint: #9AA3B2;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 14px;
+        }
+
+        body {
+            font-family: 'Figtree', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 2rem 1rem 4rem;
+        }
+
+        .topbar {
+            max-width: 640px;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .topbar-logo {
+            width: 38px;
+            height: 38px;
+            background: var(--blue);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .topbar-logo svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: #fff;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .topbar-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .topbar-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .page-header {
+            max-width: 640px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .page-icon {
+            width: 52px;
+            height: 52px;
+            flex-shrink: 0;
+            background: var(--blue);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .page-icon svg {
+            width: 26px;
+            height: 26px;
+            fill: none;
+            stroke: #fff;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .page-label {
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: .8px;
+            color: var(--text-hint);
+            margin-bottom: 3px;
+        }
+
+        .page-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.2;
+        }
+
+        .info-box {
+            max-width: 640px;
+            margin: 0 auto 1.25rem;
+            display: flex;
+            gap: 10px;
+            background: var(--blue-light);
+            border: 1px solid #C5D8EF;
+            border-radius: var(--radius-md);
+            padding: 12px 14px;
+        }
+
+        .info-box svg {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: var(--blue);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .info-box p {
+            font-size: 13px;
+            color: var(--blue-text);
+            line-height: 1.55;
+        }
+
+        .card {
+            max-width: 640px;
+            margin: 0 auto 1.25rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem;
+        }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .9px;
+            color: var(--text-hint);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+            margin-bottom: 1.25rem;
+        }
+
+        .field {
+            margin-bottom: 1.1rem;
+        }
+
+        .field:last-child {
+            margin-bottom: 0;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        label .req {
+            color: var(--red);
+            margin-left: 2px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 10px 13px;
+            font-size: 14px;
+            font-family: 'Figtree', sans-serif;
+            color: var(--text);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            outline: none;
+            transition: border-color .15s, box-shadow .15s;
+        }
+
+        input:focus {
+            border-color: var(--border-focus);
+            box-shadow: 0 0 0 3px rgba(29, 95, 166, .12);
+        }
+
+        input::placeholder {
+            color: var(--text-hint);
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        @media(max-width: 480px) {
+            .row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .field-hint {
+            font-size: 12px;
+            color: var(--text-hint);
+            margin-top: 5px;
+        }
+
+        .err {
+            font-size: 12px;
+            color: var(--red);
+            margin-top: 5px;
+            display: none;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .err svg {
+            width: 13px;
+            height: 13px;
+            fill: none;
+            stroke: var(--red);
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+        }
+
+        input.invalid {
+            border-color: var(--red) !important;
+        }
+
+        .fil-label {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .fil-label .req {
+            color: var(--red);
+        }
+
+        .fil-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 1.1rem;
+        }
+
+        .fil-tab {
+            flex: 1;
+            padding: 10px 8px;
+            font-size: 13px;
+            font-weight: 500;
+            font-family: 'Figtree', sans-serif;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            background: var(--bg);
+            color: var(--text-muted);
+            cursor: pointer;
+            text-align: center;
+            transition: all .15s;
+            line-height: 1.3;
+        }
+
+        .fil-tab:hover {
+            border-color: var(--blue);
+            color: var(--blue);
+            background: var(--blue-light);
+        }
+
+        .fil-tab.active {
+            background: var(--blue);
+            color: #fff;
+            border-color: var(--blue);
+        }
+
+        .fil-tab .tab-icon {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 3px;
+        }
+
+        @media(max-width:400px) {
+            .fil-tab {
+                font-size: 12px;
+                padding: 8px 4px;
+            }
+        }
+
+        .fil-fields {
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .fil-fields.show {
+            display: flex;
+        }
+
+        .fil-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--blue-text);
+            background: var(--blue-light);
+            border-radius: var(--radius-sm);
+            padding: 7px 10px;
+            margin-bottom: 4px;
+        }
+
+        .fil-badge svg {
+            width: 15px;
+            height: 15px;
+            fill: none;
+            stroke: var(--blue);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .actions {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 13px;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: 'Figtree', sans-serif;
+            color: #fff;
+            background: var(--blue);
+            border: none;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background .15s, transform .1s;
+        }
+
+        .btn-submit:hover {
+            background: var(--blue-dark);
+        }
+
+        .btn-submit:active {
+            transform: scale(.98);
+        }
+
+        .btn-submit:disabled {
+            background: var(--text-hint);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-submit svg {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: #fff;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .security-note {
+            text-align: center;
+            margin-top: 12px;
+            font-size: 12px;
+            color: var(--text-hint);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .security-note svg {
+            width: 13px;
+            height: 13px;
+            fill: none;
+            stroke: var(--text-hint);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .spinner {
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255, 255, 255, .4);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin .7s linear infinite;
+            display: none;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(80px);
+            background: #1A1F2E;
+            color: #fff;
+            font-size: 13px;
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            opacity: 0;
+            transition: all .3s;
+            pointer-events: none;
+            white-space: nowrap;
+            z-index: 999;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        #successPage {
+            display: none;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .success-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .success-icon {
+            width: 72px;
+            height: 72px;
+            background: #EAF7F1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.25rem;
+        }
+
+        .success-icon svg {
+            width: 36px;
+            height: 36px;
+            fill: none;
+            stroke: var(--green);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .success-card h2 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .success-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.65;
+        }
+
+        .protocol-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin: 1.25rem auto 0;
+            padding: 9px 18px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: .5px;
+        }
+
+        .protocol-badge svg {
+            width: 15px;
+            height: 15px;
+            fill: none;
+            stroke: var(--blue);
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+
+        .success-info {
+            margin-top: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .success-info-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .success-info-item svg {
+            width: 15px;
+            height: 15px;
+            fill: none;
+            stroke: var(--green);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .btn-reset {
+            margin-top: 1.5rem;
+            padding: 11px 28px;
+            font-size: 14px;
+            font-weight: 500;
+            font-family: 'Figtree', sans-serif;
+            color: var(--blue);
+            background: transparent;
+            border: 1px solid var(--blue);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: background .15s;
+        }
+
+        .btn-reset:hover {
+            background: var(--blue-light);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="toast" id="toast"></div>
+
+    <div class="topbar">
+        <div class="topbar-logo">
+            <svg viewBox="0 0 24 24">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>
+        </div>
+        <div>
+            <div class="topbar-name">Portal de Serviços Online</div>
+            <div class="topbar-sub">Serviços Documentais &amp; Agendamentos</div>
+        </div>
+    </div>
+
+    <div id="formPage">
+
+        <div class="page-header">
+            <div class="page-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+            </div>
+            <div>
+                <div class="page-label">Serviços Online</div>
+                <div class="page-title">Certidão de Quitação Eleitoral</div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="16" x2="12" y2="12" />
+                <line x1="12" y1="8" x2="12.01" y2="8" />
+            </svg>
+            <p>Preencha os dados exatamente como constam no seu título de eleitor ou CPF. O documento será processado
+                após o envio do formulário.</p>
+        </div>
+
+        <div class="card">
+            <div class="section-label">Dados Pessoais</div>
+
+            <div class="field">
+                <label for="nome">Nome completo <span class="req">*</span></label>
+                <input type="text" id="nome" placeholder="Ex: João da Silva Souza" autocomplete="name" />
+                <div class="err" id="err-nome">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    Informe o nome completo.
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="field">
+                    <label for="cpf">CPF <span class="req">*</span></label>
+                    <input type="text" id="cpf" placeholder="000.000.000-00" maxlength="14" autocomplete="off"
+                        inputmode="numeric" />
+                    <div class="err" id="err-cpf">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="12" y1="8" x2="12" y2="12" />
+                            <line x1="12" y1="16" x2="12.01" y2="16" />
+                        </svg>
+                        CPF inválido.
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="titulo">Título de Eleitor</label>
+                    <input type="text" id="titulo" placeholder="0000 0000 0000" maxlength="15" inputmode="numeric" />
+                    <div class="field-hint">Opcional</div>
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="nasc">Data de nascimento <span class="req">*</span></label>
+                <input type="date" id="nasc" />
+                <div class="err" id="err-nasc">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    Informe a data de nascimento.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-label">Filiação</div>
+
+            <div class="fil-label">Quais filiações deseja informar? <span class="req">*</span></div>
+
+            <div class="fil-tabs">
+                <button class="fil-tab" id="tab-pai" onclick="setFil('pai')" type="button">
+                    <span class="tab-icon">👨</span>
+                    Somente pai
+                </button>
+                <button class="fil-tab" id="tab-mae" onclick="setFil('mae')" type="button">
+                    <span class="tab-icon">👩</span>
+                    Somente mãe
+                </button>
+                <button class="fil-tab" id="tab-ambos" onclick="setFil('ambos')" type="button">
+                    <span class="tab-icon">👨‍👩‍👦</span>
+                    Ambos
+                </button>
+            </div>
+
+            <div class="err" id="err-fil" style="margin-top:-6px; margin-bottom:12px;">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" y1="8" x2="12" y2="12" />
+                    <line x1="12" y1="16" x2="12.01" y2="16" />
+                </svg>
+                Selecione uma opção de filiação.
+            </div>
+
+            <div class="fil-fields" id="fields-pai">
+                <div class="fil-badge">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                    </svg>
+                    Filiação paterna
+                </div>
+                <div class="field" style="margin-bottom:0;">
+                    <label for="pai">Nome do pai <span class="req">*</span></label>
+                    <input type="text" id="pai" placeholder="Nome completo do pai" />
+                    <div class="err" id="err-pai">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="12" y1="8" x2="12" y2="12" />
+                            <line x1="12" y1="16" x2="12.01" y2="16" />
+                        </svg>
+                        Informe o nome do pai.
+                    </div>
+                </div>
+            </div>
+
+            <div class="fil-fields" id="fields-mae">
+                <div class="fil-badge">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                    </svg>
+                    Filiação materna
+                </div>
+                <div class="field" style="margin-bottom:0;">
+                    <label for="mae">Nome da mãe <span class="req">*</span></label>
+                    <input type="text" id="mae" placeholder="Nome completo da mãe" />
+                    <div class="err" id="err-mae">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="12" y1="8" x2="12" y2="12" />
+                            <line x1="12" y1="16" x2="12.01" y2="16" />
+                        </svg>
+                        Informe o nome da mãe.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button class="btn-submit" id="btnSubmit" onclick="handleSubmit()" type="button">
+                <svg id="btnIcon" viewBox="0 0 24 24">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="16" y1="13" x2="8" y2="13" />
+                    <line x1="16" y1="17" x2="8" y2="17" />
+                    <polyline points="10 9 9 9 8 9" />
+                </svg>
+                <div class="spinner" id="spinner"></div>
+                <span id="btnText">Solicitar Certidão</span>
+            </button>
+            <div class="security-note">
+                <svg viewBox="0 0 24 24">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                </svg>
+                Seus dados são protegidos e usados somente para emissão da certidão.
+            </div>
+        </div>
+
+    </div>
+
+    <div id="successPage">
+        <div class="success-card">
+            <div class="success-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                    <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+            </div>
+            <h2>Solicitação enviada!</h2>
+            <p>Seus dados foram recebidos com sucesso.<br>A <strong>Certidão de Quitação Eleitoral</strong> será
+                processada e o resultado enviado em breve.</p>
+
+            <div class="protocol-badge">
+                <svg viewBox="0 0 24 24">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                </svg>
+                <span id="protocolNum">—</span>
+            </div>
+
+            <div class="success-info">
+                <div class="success-info-item">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                        <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                    Dados salvos na planilha do Google Sheets
+                </div>
+                <div class="success-info-item">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                        <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                    Notificação enviada para eliedsoalves@gmail.com
+                </div>
+            </div>
+
+            <br>
+            <button class="btn-reset" onclick="reset()" type="button">+ Nova solicitação</button>
+        </div>
+    </div>
+
+    <script>
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz1vlc3qLwSq8n0GC89MWOwV4hfrT_0SoJMv6fJkWZM-Q5saCahqKpAhW8u-lGGj_m_/exec';
+        let filMode = null;
+
+        document.getElementById('cpf').addEventListener('input', function () {
+            let v = this.value.replace(/\D/g, '');
+            if (v.length > 11) v = v.slice(0, 11);
+            if (v.length > 9) v = v.slice(0, 3) + '.' + v.slice(3, 6) + '.' + v.slice(6, 9) + '-' + v.slice(9);
+            else if (v.length > 6) v = v.slice(0, 3) + '.' + v.slice(3, 6) + '.' + v.slice(6);
+            else if (v.length > 3) v = v.slice(0, 3) + '.' + v.slice(3);
+            this.value = v;
+        });
+
+        document.getElementById('titulo').addEventListener('input', function () {
+            let v = this.value.replace(/\D/g, '');
+            if (v.length > 12) v = v.slice(0, 12);
+            if (v.length > 8) v = v.slice(0, 4) + ' ' + v.slice(4, 8) + ' ' + v.slice(8);
+            else if (v.length > 4) v = v.slice(0, 4) + ' ' + v.slice(4);
+            this.value = v;
+        });
+
+        function setFil(mode) {
+            filMode = mode;
+            ['pai', 'mae', 'ambos'].forEach(t => document.getElementById('tab-' + t).classList.remove('active'));
+            document.getElementById('tab-' + mode).classList.add('active');
+            document.getElementById('fields-pai').classList.remove('show');
+            document.getElementById('fields-mae').classList.remove('show');
+            showErr('err-fil', false);
+            if (mode === 'pai') document.getElementById('fields-pai').classList.add('show');
+            if (mode === 'mae') document.getElementById('fields-mae').classList.add('show');
+            if (mode === 'ambos') {
+                document.getElementById('fields-pai').classList.add('show');
+                document.getElementById('fields-mae').classList.add('show');
+            }
+        }
+
+        function showErr(id, show) { document.getElementById(id).style.display = show ? 'flex' : 'none'; }
+        function markInvalid(id, invalid) {
+            const el = document.getElementById(id);
+            if (el) invalid ? el.classList.add('invalid') : el.classList.remove('invalid');
+        }
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.textContent = msg;
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 3500);
+        }
+        function setLoading(on) {
+            const btn = document.getElementById('btnSubmit');
+            document.getElementById('btnIcon').style.display = on ? 'none' : 'block';
+            document.getElementById('spinner').style.display = on ? 'block' : 'none';
+            document.getElementById('btnText').textContent = on ? 'Enviando...' : 'Solicitar Certidão';
+            btn.disabled = on;
+        }
+
+        function validateCPF(cpf) {
+            cpf = cpf.replace(/\D/g, '');
+            if (cpf.length !== 11) return false;
+            if (/^(\d)\1+$/.test(cpf)) return false;
+            let sum = 0;
+            for (let i = 0; i < 9; i++) sum += parseInt(cpf[i]) * (10 - i);
+            let r = (sum * 10) % 11;
+            if (r === 10 || r === 11) r = 0;
+            if (r !== parseInt(cpf[9])) return false;
+            sum = 0;
+            for (let i = 0; i < 10; i++) sum += parseInt(cpf[i]) * (11 - i);
+            r = (sum * 10) % 11;
+            if (r === 10 || r === 11) r = 0;
+            return r === parseInt(cpf[10]);
+        }
+
+        function formatDate(val) {
+            if (!val) return '—';
+            const [y, m, d] = val.split('-');
+            return d + '/' + m + '/' + y;
+        }
+
+        async function handleSubmit() {
+            let ok = true;
+
+            const nome = document.getElementById('nome').value.trim();
+            const cpf = document.getElementById('cpf').value;
+            const titulo = document.getElementById('titulo').value.trim();
+            const nasc = document.getElementById('nasc').value;
+            const pai = document.getElementById('pai').value.trim();
+            const mae = document.getElementById('mae').value.trim();
+
+            const nomeOk = nome.length >= 3;
+            showErr('err-nome', !nomeOk); markInvalid('nome', !nomeOk);
+            if (!nomeOk) ok = false;
+
+            const cpfOk = validateCPF(cpf);
+            showErr('err-cpf', !cpfOk); markInvalid('cpf', !cpfOk);
+            if (!cpfOk) ok = false;
+
+            const nascOk = !!nasc;
+            showErr('err-nasc', !nascOk); markInvalid('nasc', !nascOk);
+            if (!nascOk) ok = false;
+
+            if (!filMode) {
+                showErr('err-fil', true); ok = false;
+            } else {
+                showErr('err-fil', false);
+                if ((filMode === 'pai' || filMode === 'ambos') && !pai) {
+                    showErr('err-pai', true); markInvalid('pai', true); ok = false;
+                } else { showErr('err-pai', false); markInvalid('pai', false); }
+                if ((filMode === 'mae' || filMode === 'ambos') && !mae) {
+                    showErr('err-mae', true); markInvalid('mae', true); ok = false;
+                } else { showErr('err-mae', false); markInvalid('mae', false); }
+            }
+
+            if (!ok) return;
+
+            setLoading(true);
+
+            const filLabel = { pai: 'Somente pai', mae: 'Somente mãe', ambos: 'Ambos' }[filMode];
+            const proto = 'QE-' + Date.now().toString().slice(-8).toUpperCase();
+
+            const payload = {
+                nome,
+                cpf,
+                titulo: titulo || '—',
+                nascimento: formatDate(nasc),
+                filiacao: filLabel,
+                nomePai: pai || '—',
+                nomeMae: mae || '—',
+                protocolo: proto
+            };
+
+            try {
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                document.getElementById('protocolNum').textContent = 'Protocolo: ' + proto;
+                document.getElementById('formPage').style.display = 'none';
+                document.getElementById('successPage').style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            } catch (err) {
+                showToast('⚠️ Erro ao enviar. Verifique sua conexão e tente novamente.');
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        function reset() {
+            filMode = null;
+            document.getElementById('formPage').querySelectorAll('input').forEach(i => { i.value = ''; i.classList.remove('invalid'); });
+            document.getElementById('formPage').querySelectorAll('.err').forEach(e => e.style.display = 'none');
+            ['pai', 'mae', 'ambos'].forEach(t => document.getElementById('tab-' + t).classList.remove('active'));
+            document.getElementById('fields-pai').classList.remove('show');
+            document.getElementById('fields-mae').classList.remove('show');
+            document.getElementById('formPage').style.display = 'block';
+            document.getElementById('successPage').style.display = 'none';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+
+</html>
