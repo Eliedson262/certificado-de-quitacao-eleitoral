@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Certidão de Quitação Eleitoral — Serviços Online</title>
+    <title>Certidão de Quitação Eleitoral — Souza Conecta</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <style>
         *,
         *::before,
@@ -18,132 +19,189 @@
         }
 
         :root {
-            --blue: #1D5FA6;
-            --blue-dark: #185290;
-            --blue-light: #EBF2FA;
-            --blue-text: #0C447C;
-            --green: #1D9E75;
-            --red: #D85A30;
-            --bg: #F4F6F9;
-            --surface: #FFFFFF;
-            --border: #DDE2EA;
-            --border-focus: #1D5FA6;
-            --text: #1A1F2E;
-            --text-muted: #5A6478;
-            --text-hint: #9AA3B2;
+            --navy: #0D1B2E;
+            --navy-mid: #112240;
+            --navy-card: #162A45;
+            --navy-input: #1A3050;
+            --blue: #2A6DD9;
+            --blue-bright: #3B82F6;
+            --blue-glow: rgba(42, 109, 217, 0.25);
+            --blue-line: rgba(42, 109, 217, 0.35);
+            --white: #FFFFFF;
+            --white-80: rgba(255, 255, 255, 0.80);
+            --white-50: rgba(255, 255, 255, 0.50);
+            --white-20: rgba(255, 255, 255, 0.12);
+            --white-10: rgba(255, 255, 255, 0.07);
+            --red: #E05252;
+            --green: #22C987;
             --radius-sm: 6px;
             --radius-md: 10px;
-            --radius-lg: 14px;
+            --radius-lg: 16px;
+            --radius-xl: 22px;
         }
 
         body {
-            font-family: 'Figtree', sans-serif;
-            background: var(--bg);
-            color: var(--text);
+            font-family: 'Montserrat', sans-serif;
+            background: var(--navy);
+            color: var(--white);
             min-height: 100vh;
-            padding: 2rem 1rem 4rem;
+            padding: 0 0 5rem;
         }
 
-        .topbar {
+        /* ── HERO HEADER ── */
+        .hero {
+            background: linear-gradient(160deg, #0D1B2E 0%, #112240 60%, #0a1628 100%);
+            border-bottom: 1px solid var(--white-20);
+            padding: 2rem 1.5rem 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, rgba(42, 109, 217, 0.18) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -40px;
+            left: -40px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(42, 109, 217, 0.10) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-inner {
             max-width: 640px;
-            margin: 0 auto 2rem;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* LOGO */
+        .brand {
             display: flex;
             align-items: center;
             gap: 12px;
+            margin-bottom: 2rem;
         }
 
-        .topbar-logo {
-            width: 38px;
-            height: 38px;
-            background: var(--blue);
-            border-radius: var(--radius-sm);
+        .brand-logo {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--blue) 0%, #1a4fa0 100%);
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .topbar-logo svg {
-            width: 20px;
-            height: 20px;
-            fill: none;
-            stroke: #fff;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        .topbar-name {
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--text);
-        }
-
-        .topbar-sub {
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-
-        .page-header {
-            max-width: 640px;
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .page-icon {
-            width: 52px;
-            height: 52px;
+            box-shadow: 0 4px 16px rgba(42, 109, 217, 0.4);
             flex-shrink: 0;
-            background: var(--blue);
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
-        .page-icon svg {
-            width: 26px;
-            height: 26px;
+        .brand-logo svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .brand-text-top {
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--white);
+            line-height: 1;
+        }
+
+        .brand-text-top span {
+            color: var(--blue-bright);
+        }
+
+        .brand-text-sub {
+            font-size: 9px;
+            font-weight: 500;
+            letter-spacing: 2.5px;
+            color: var(--white-50);
+            text-transform: uppercase;
+            margin-top: 3px;
+        }
+
+        /* BADGE */
+        .service-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--white-10);
+            border: 1px solid var(--blue-line);
+            border-radius: 999px;
+            padding: 5px 12px;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--blue-bright);
+            margin-bottom: 1rem;
+        }
+
+        .service-badge svg {
+            width: 12px;
+            height: 12px;
             fill: none;
-            stroke: #fff;
-            stroke-width: 2;
+            stroke: var(--blue-bright);
+            stroke-width: 2.5;
             stroke-linecap: round;
             stroke-linejoin: round;
         }
 
-        .page-label {
-            font-size: 11px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: .8px;
-            color: var(--text-hint);
-            margin-bottom: 3px;
-        }
-
-        .page-title {
-            font-size: 22px;
-            font-weight: 600;
-            color: var(--text);
+        .hero-title {
+            font-size: 26px;
+            font-weight: 800;
             line-height: 1.2;
+            color: var(--white);
+            margin-bottom: 8px;
+            letter-spacing: -.3px;
         }
 
-        .info-box {
+        .hero-title span {
+            color: var(--blue-bright);
+        }
+
+        .hero-desc {
+            font-size: 13px;
+            color: var(--white-50);
+            font-weight: 400;
+            line-height: 1.6;
+            max-width: 480px;
+        }
+
+        /* ── BODY ── */
+        .body-wrap {
             max-width: 640px;
-            margin: 0 auto 1.25rem;
+            margin: 0 auto;
+            padding: 1.75rem 1.25rem 0;
+        }
+
+        /* INFO BOX */
+        .info-box {
             display: flex;
-            gap: 10px;
-            background: var(--blue-light);
-            border: 1px solid #C5D8EF;
+            gap: 12px;
+            background: rgba(42, 109, 217, 0.12);
+            border: 1px solid rgba(42, 109, 217, 0.30);
             border-radius: var(--radius-md);
-            padding: 12px 14px;
+            padding: 13px 15px;
+            margin-bottom: 1.5rem;
         }
 
         .info-box svg {
             width: 18px;
             height: 18px;
             fill: none;
-            stroke: var(--blue);
+            stroke: var(--blue-bright);
             stroke-width: 2;
             stroke-linecap: round;
             stroke-linejoin: round;
@@ -152,33 +210,48 @@
         }
 
         .info-box p {
-            font-size: 13px;
-            color: var(--blue-text);
-            line-height: 1.55;
+            font-size: 12.5px;
+            color: rgba(147, 197, 253, 0.9);
+            line-height: 1.6;
+            font-weight: 400;
         }
 
+        /* CARD */
         .card {
-            max-width: 640px;
-            margin: 0 auto 1.25rem;
-            background: var(--surface);
-            border: 1px solid var(--border);
+            background: var(--navy-card);
+            border: 1px solid var(--white-20);
             border-radius: var(--radius-lg);
             padding: 1.75rem;
-        }
-
-        .section-label {
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: .9px;
-            color: var(--text-hint);
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 10px;
             margin-bottom: 1.25rem;
         }
 
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--blue-bright);
+            border-bottom: 1px solid var(--white-20);
+            padding-bottom: 12px;
+            margin-bottom: 1.4rem;
+        }
+
+        .section-label svg {
+            width: 14px;
+            height: 14px;
+            fill: none;
+            stroke: var(--blue-bright);
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* FIELDS */
         .field {
-            margin-bottom: 1.1rem;
+            margin-bottom: 1.15rem;
         }
 
         .field:last-child {
@@ -187,14 +260,16 @@
 
         label {
             display: block;
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--text-muted);
-            margin-bottom: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: .6px;
+            text-transform: uppercase;
+            color: var(--white-50);
+            margin-bottom: 7px;
         }
 
         label .req {
-            color: var(--red);
+            color: var(--blue-bright);
             margin-left: 2px;
         }
 
@@ -202,24 +277,35 @@
         input[type="date"],
         input[type="tel"] {
             width: 100%;
-            padding: 10px 13px;
+            padding: 11px 14px;
             font-size: 14px;
-            font-family: 'Figtree', sans-serif;
-            color: var(--text);
-            background: var(--surface);
-            border: 1px solid var(--border);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            color: var(--white);
+            background: var(--navy-input);
+            border: 1px solid var(--white-20);
             border-radius: var(--radius-sm);
             outline: none;
             transition: border-color .15s, box-shadow .15s;
         }
 
+        input[type="date"] {
+            color-scheme: dark;
+        }
+
         input:focus {
-            border-color: var(--border-focus);
-            box-shadow: 0 0 0 3px rgba(29, 95, 166, .12);
+            border-color: var(--blue);
+            box-shadow: 0 0 0 3px var(--blue-glow);
         }
 
         input::placeholder {
-            color: var(--text-hint);
+            color: var(--white-20);
+            font-weight: 400;
+        }
+
+        input.invalid {
+            border-color: var(--red) !important;
+            box-shadow: 0 0 0 3px rgba(224, 82, 82, .18);
         }
 
         .row {
@@ -235,62 +321,64 @@
         }
 
         .field-hint {
-            font-size: 12px;
-            color: var(--text-hint);
+            font-size: 11px;
+            color: var(--white-50);
             margin-top: 5px;
+            font-weight: 400;
         }
 
         .err {
-            font-size: 12px;
-            color: var(--red);
-            margin-top: 5px;
+            font-size: 11.5px;
+            color: #f87171;
+            margin-top: 6px;
             display: none;
             align-items: center;
-            gap: 4px;
+            gap: 5px;
+            font-weight: 500;
         }
 
         .err svg {
             width: 13px;
             height: 13px;
             fill: none;
-            stroke: var(--red);
+            stroke: #f87171;
             stroke-width: 2.5;
+            flex-shrink: 0;
             stroke-linecap: round;
             stroke-linejoin: round;
-            flex-shrink: 0;
         }
 
-        input.invalid {
-            border-color: var(--red) !important;
-        }
-
+        /* FILIATION */
         .fil-label {
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--text-muted);
-            margin-bottom: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: .6px;
+            text-transform: uppercase;
+            color: var(--white-50);
+            margin-bottom: 10px;
         }
 
         .fil-label .req {
-            color: var(--red);
+            color: var(--blue-bright);
         }
 
         .fil-tabs {
             display: flex;
             gap: 8px;
-            margin-bottom: 1.1rem;
+            margin-bottom: 1.15rem;
         }
 
         .fil-tab {
             flex: 1;
-            padding: 10px 8px;
-            font-size: 13px;
-            font-weight: 500;
-            font-family: 'Figtree', sans-serif;
-            border: 1px solid var(--border);
+            padding: 12px 8px;
+            font-size: 12px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: .3px;
+            border: 1px solid var(--white-20);
             border-radius: var(--radius-sm);
-            background: var(--bg);
-            color: var(--text-muted);
+            background: var(--navy-input);
+            color: var(--white-50);
             cursor: pointer;
             text-align: center;
             transition: all .15s;
@@ -299,26 +387,27 @@
 
         .fil-tab:hover {
             border-color: var(--blue);
-            color: var(--blue);
-            background: var(--blue-light);
+            color: var(--blue-bright);
+            background: rgba(42, 109, 217, 0.12);
         }
 
         .fil-tab.active {
             background: var(--blue);
             color: #fff;
             border-color: var(--blue);
+            box-shadow: 0 4px 14px rgba(42, 109, 217, 0.4);
         }
 
         .fil-tab .tab-icon {
             display: block;
-            font-size: 18px;
-            margin-bottom: 3px;
+            font-size: 20px;
+            margin-bottom: 5px;
         }
 
         @media(max-width:400px) {
             .fil-tab {
-                font-size: 12px;
-                padding: 8px 4px;
+                font-size: 11px;
+                padding: 10px 4px;
             }
         }
 
@@ -336,50 +425,66 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--blue-text);
-            background: var(--blue-light);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: .5px;
+            text-transform: uppercase;
+            color: var(--blue-bright);
+            background: rgba(42, 109, 217, 0.12);
+            border: 1px solid rgba(42, 109, 217, 0.25);
             border-radius: var(--radius-sm);
-            padding: 7px 10px;
+            padding: 8px 12px;
             margin-bottom: 4px;
         }
 
         .fil-badge svg {
-            width: 15px;
-            height: 15px;
+            width: 14px;
+            height: 14px;
             fill: none;
-            stroke: var(--blue);
+            stroke: var(--blue-bright);
             stroke-width: 2;
             stroke-linecap: round;
             stroke-linejoin: round;
         }
 
+        /* SUBMIT */
         .actions {
-            max-width: 640px;
-            margin: 0 auto;
+            margin-bottom: 0;
         }
 
         .btn-submit {
             width: 100%;
-            padding: 13px;
-            font-size: 15px;
-            font-weight: 600;
-            font-family: 'Figtree', sans-serif;
+            padding: 15px;
+            font-size: 14px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: .8px;
+            text-transform: uppercase;
             color: #fff;
-            background: var(--blue);
+            background: linear-gradient(135deg, var(--blue) 0%, #1a4fa0 100%);
             border: none;
             border-radius: var(--radius-md);
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            transition: background .15s, transform .1s;
+            gap: 10px;
+            transition: all .2s;
+            box-shadow: 0 6px 24px rgba(42, 109, 217, 0.45);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-submit::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, transparent 100%);
         }
 
         .btn-submit:hover {
-            background: var(--blue-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 10px 30px rgba(42, 109, 217, 0.55);
         }
 
         .btn-submit:active {
@@ -387,9 +492,11 @@
         }
 
         .btn-submit:disabled {
-            background: var(--text-hint);
+            background: var(--navy-input);
+            box-shadow: none;
             cursor: not-allowed;
             transform: none;
+            color: var(--white-50);
         }
 
         .btn-submit svg {
@@ -397,40 +504,52 @@
             height: 18px;
             fill: none;
             stroke: #fff;
-            stroke-width: 2;
+            stroke-width: 2.5;
             stroke-linecap: round;
             stroke-linejoin: round;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-submit span {
+            position: relative;
+            z-index: 1;
         }
 
         .security-note {
             text-align: center;
-            margin-top: 12px;
-            font-size: 12px;
-            color: var(--text-hint);
+            margin-top: 14px;
+            font-size: 11px;
+            color: var(--white-50);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 5px;
+            gap: 6px;
+            font-weight: 500;
+            letter-spacing: .3px;
         }
 
         .security-note svg {
             width: 13px;
             height: 13px;
             fill: none;
-            stroke: var(--text-hint);
+            stroke: var(--white-50);
             stroke-width: 2;
             stroke-linecap: round;
             stroke-linejoin: round;
         }
 
+        /* SPINNER */
         .spinner {
             width: 18px;
             height: 18px;
-            border: 2px solid rgba(255, 255, 255, .4);
+            border: 2px solid rgba(255, 255, 255, .3);
             border-top-color: #fff;
             border-radius: 50%;
             animation: spin .7s linear infinite;
             display: none;
+            position: relative;
+            z-index: 1;
         }
 
         @keyframes spin {
@@ -439,16 +558,19 @@
             }
         }
 
+        /* TOAST */
         .toast {
             position: fixed;
             bottom: 24px;
             left: 50%;
             transform: translateX(-50%) translateY(80px);
-            background: #1A1F2E;
+            background: #1e2d3d;
             color: #fff;
             font-size: 13px;
-            padding: 10px 20px;
+            font-weight: 500;
+            padding: 12px 22px;
             border-radius: var(--radius-md);
+            border: 1px solid var(--white-20);
             opacity: 0;
             transition: all .3s;
             pointer-events: none;
@@ -461,119 +583,167 @@
             transform: translateX(-50%) translateY(0);
         }
 
+        /* SUCCESS */
         #successPage {
             display: none;
             max-width: 640px;
             margin: 0 auto;
+            padding: 1.75rem 1.25rem 0;
         }
 
         .success-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
+            background: var(--navy-card);
+            border: 1px solid var(--white-20);
+            border-radius: var(--radius-xl);
             padding: 3rem 2rem;
             text-align: center;
         }
 
-        .success-icon {
-            width: 72px;
-            height: 72px;
-            background: #EAF7F1;
+        .success-icon-wrap {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: rgba(34, 201, 135, 0.12);
+            border: 1px solid rgba(34, 201, 135, 0.3);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.25rem;
         }
 
-        .success-icon svg {
-            width: 36px;
-            height: 36px;
+        .success-icon-wrap svg {
+            width: 38px;
+            height: 38px;
             fill: none;
             stroke: var(--green);
-            stroke-width: 2;
+            stroke-width: 2.5;
             stroke-linecap: round;
             stroke-linejoin: round;
         }
 
         .success-card h2 {
-            font-size: 20px;
-            font-weight: 600;
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -.3px;
             margin-bottom: 10px;
         }
 
         .success-card p {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.65;
+            font-size: 13.5px;
+            color: var(--white-50);
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        .success-card strong {
+            color: var(--white-80);
         }
 
         .protocol-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            margin: 1.25rem auto 0;
-            padding: 9px 18px;
-            background: var(--bg);
-            border: 1px solid var(--border);
+            margin: 1.5rem auto 0;
+            padding: 10px 20px;
+            background: var(--navy-input);
+            border: 1px solid var(--blue-line);
             border-radius: var(--radius-sm);
             font-size: 13px;
-            font-weight: 600;
-            color: var(--text-muted);
-            letter-spacing: .5px;
+            font-weight: 700;
+            color: var(--blue-bright);
+            letter-spacing: 1px;
         }
 
         .protocol-badge svg {
             width: 15px;
             height: 15px;
             fill: none;
-            stroke: var(--blue);
+            stroke: var(--blue-bright);
             stroke-width: 2;
             stroke-linecap: round;
         }
 
-        .success-info {
-            margin-top: 1.25rem;
+        .success-checks {
+            margin-top: 1.5rem;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
+            text-align: left;
+            background: var(--navy-input);
+            border-radius: var(--radius-md);
+            padding: 14px 16px;
         }
 
-        .success-info-item {
+        .check-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12.5px;
+            color: var(--white-80);
+            font-weight: 500;
+        }
+
+        .check-icon {
+            width: 22px;
+            height: 22px;
+            flex-shrink: 0;
+            background: rgba(34, 201, 135, 0.15);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
-            font-size: 13px;
-            color: var(--text-muted);
         }
 
-        .success-info-item svg {
-            width: 15px;
-            height: 15px;
+        .check-icon svg {
+            width: 12px;
+            height: 12px;
             fill: none;
             stroke: var(--green);
-            stroke-width: 2;
+            stroke-width: 3;
             stroke-linecap: round;
             stroke-linejoin: round;
         }
 
         .btn-reset {
-            margin-top: 1.5rem;
-            padding: 11px 28px;
-            font-size: 14px;
-            font-weight: 500;
-            font-family: 'Figtree', sans-serif;
-            color: var(--blue);
+            margin-top: 1.75rem;
+            padding: 12px 32px;
+            font-size: 13px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--blue-bright);
             background: transparent;
-            border: 1px solid var(--blue);
+            border: 1px solid var(--blue-line);
             border-radius: var(--radius-md);
             cursor: pointer;
-            transition: background .15s;
+            transition: all .15s;
         }
 
         .btn-reset:hover {
-            background: var(--blue-light);
+            background: rgba(42, 109, 217, 0.12);
+            border-color: var(--blue);
+        }
+
+        /* FOOTER */
+        .footer {
+            max-width: 640px;
+            margin: 2.5rem auto 0;
+            padding: 0 1.25rem;
+            text-align: center;
+            border-top: 1px solid var(--white-10);
+            padding-top: 1.5rem;
+        }
+
+        .footer p {
+            font-size: 11px;
+            color: var(--white-50);
+            font-weight: 500;
+            letter-spacing: .5px;
+        }
+
+        .footer span {
+            color: var(--blue-bright);
         }
     </style>
 </head>
@@ -582,230 +752,262 @@
 
     <div class="toast" id="toast"></div>
 
-    <div class="topbar">
-        <div class="topbar-logo">
-            <svg viewBox="0 0 24 24">
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                <polyline points="9 22 9 12 15 12 15 22" />
-            </svg>
-        </div>
-        <div>
-            <div class="topbar-name">Portal de Serviços Online</div>
-            <div class="topbar-sub">Serviços Documentais &amp; Agendamentos</div>
-        </div>
-    </div>
+    <!-- HERO -->
+    <div class="hero">
+        <div class="hero-inner">
 
-    <div id="formPage">
+            <!-- BRAND -->
+            <div class="brand">
+                <div class="brand-logo">
+                    <span
+                        style="font-size:16px; font-weight:800; font-family:'Montserrat',sans-serif; letter-spacing:1px; color:#fff;">S<span
+                            style="color:#3B82F6;">C</span></span>
+                </div>
+                <div>
+                    <div class="brand-text-top">SOUZA <span>CONECTA</span></div>
+                    <div class="brand-text-sub">Vagas e Serviços</div>
+                </div>
+            </div>
 
-        <div class="page-header">
-            <div class="page-icon">
+            <!-- TITLE -->
+            <div class="service-badge">
                 <svg viewBox="0 0 24 24">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                 </svg>
+                Serviço Online
             </div>
-            <div>
-                <div class="page-label">Serviços Online</div>
-                <div class="page-title">Certidão de Quitação Eleitoral</div>
-            </div>
+            <div class="hero-title">Certidão de<br><span>Quitação Eleitoral</span></div>
+            <p class="hero-desc">Solicite sua certidão de forma rápida e segura. Preencha os dados abaixo e acompanhe o
+                processamento.</p>
+
         </div>
-
-        <div class="info-box">
-            <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="10" />
-                <line x1="12" y1="16" x2="12" y2="12" />
-                <line x1="12" y1="8" x2="12.01" y2="8" />
-            </svg>
-            <p>Preencha os dados exatamente como constam no seu título de eleitor ou CPF. O documento será processado
-                após o envio do formulário.</p>
-        </div>
-
-        <div class="card">
-            <div class="section-label">Dados Pessoais</div>
-
-            <div class="field">
-                <label for="nome">Nome completo <span class="req">*</span></label>
-                <input type="text" id="nome" placeholder="Ex: João da Silva Souza" autocomplete="name" />
-                <div class="err" id="err-nome">
-                    <svg viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="8" x2="12" y2="12" />
-                        <line x1="12" y1="16" x2="12.01" y2="16" />
-                    </svg>
-                    Informe o nome completo.
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="field">
-                    <label for="cpf">CPF <span class="req">*</span></label>
-                    <input type="text" id="cpf" placeholder="000.000.000-00" maxlength="14" autocomplete="off"
-                        inputmode="numeric" />
-                    <div class="err" id="err-cpf">
-                        <svg viewBox="0 0 24 24">
-                            <circle cx="12" cy="12" r="10" />
-                            <line x1="12" y1="8" x2="12" y2="12" />
-                            <line x1="12" y1="16" x2="12.01" y2="16" />
-                        </svg>
-                        CPF inválido.
-                    </div>
-                </div>
-                <div class="field">
-                    <label for="titulo">Título de Eleitor</label>
-                    <input type="text" id="titulo" placeholder="0000 0000 0000" maxlength="15" inputmode="numeric" />
-                    <div class="field-hint">Opcional</div>
-                </div>
-            </div>
-
-            <div class="field">
-                <label for="nasc">Data de nascimento <span class="req">*</span></label>
-                <input type="date" id="nasc" />
-                <div class="err" id="err-nasc">
-                    <svg viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="8" x2="12" y2="12" />
-                        <line x1="12" y1="16" x2="12.01" y2="16" />
-                    </svg>
-                    Informe a data de nascimento.
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="section-label">Filiação</div>
-
-            <div class="fil-label">Quais filiações deseja informar? <span class="req">*</span></div>
-
-            <div class="fil-tabs">
-                <button class="fil-tab" id="tab-pai" onclick="setFil('pai')" type="button">
-                    <span class="tab-icon">👨</span>
-                    Somente pai
-                </button>
-                <button class="fil-tab" id="tab-mae" onclick="setFil('mae')" type="button">
-                    <span class="tab-icon">👩</span>
-                    Somente mãe
-                </button>
-                <button class="fil-tab" id="tab-ambos" onclick="setFil('ambos')" type="button">
-                    <span class="tab-icon">👨‍👩‍👦</span>
-                    Ambos
-                </button>
-            </div>
-
-            <div class="err" id="err-fil" style="margin-top:-6px; margin-bottom:12px;">
-                <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="12" y1="8" x2="12" y2="12" />
-                    <line x1="12" y1="16" x2="12.01" y2="16" />
-                </svg>
-                Selecione uma opção de filiação.
-            </div>
-
-            <div class="fil-fields" id="fields-pai">
-                <div class="fil-badge">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                        <circle cx="12" cy="7" r="4" />
-                    </svg>
-                    Filiação paterna
-                </div>
-                <div class="field" style="margin-bottom:0;">
-                    <label for="pai">Nome do pai <span class="req">*</span></label>
-                    <input type="text" id="pai" placeholder="Nome completo do pai" />
-                    <div class="err" id="err-pai">
-                        <svg viewBox="0 0 24 24">
-                            <circle cx="12" cy="12" r="10" />
-                            <line x1="12" y1="8" x2="12" y2="12" />
-                            <line x1="12" y1="16" x2="12.01" y2="16" />
-                        </svg>
-                        Informe o nome do pai.
-                    </div>
-                </div>
-            </div>
-
-            <div class="fil-fields" id="fields-mae">
-                <div class="fil-badge">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                        <circle cx="12" cy="7" r="4" />
-                    </svg>
-                    Filiação materna
-                </div>
-                <div class="field" style="margin-bottom:0;">
-                    <label for="mae">Nome da mãe <span class="req">*</span></label>
-                    <input type="text" id="mae" placeholder="Nome completo da mãe" />
-                    <div class="err" id="err-mae">
-                        <svg viewBox="0 0 24 24">
-                            <circle cx="12" cy="12" r="10" />
-                            <line x1="12" y1="8" x2="12" y2="12" />
-                            <line x1="12" y1="16" x2="12.01" y2="16" />
-                        </svg>
-                        Informe o nome da mãe.
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="actions">
-            <button class="btn-submit" id="btnSubmit" onclick="handleSubmit()" type="button">
-                <svg id="btnIcon" viewBox="0 0 24 24">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                    <polyline points="14 2 14 8 20 8" />
-                    <line x1="16" y1="13" x2="8" y2="13" />
-                    <line x1="16" y1="17" x2="8" y2="17" />
-                    <polyline points="10 9 9 9 8 9" />
-                </svg>
-                <div class="spinner" id="spinner"></div>
-                <span id="btnText">Solicitar Certidão</span>
-            </button>
-            <div class="security-note">
-                <svg viewBox="0 0 24 24">
-                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                </svg>
-                Seus dados são protegidos e usados somente para emissão da certidão.
-            </div>
-        </div>
-
     </div>
 
+    <!-- FORM PAGE -->
+    <div id="formPage">
+        <div class="body-wrap">
+
+            <div class="info-box">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" y1="16" x2="12" y2="12" />
+                    <line x1="12" y1="8" x2="12.01" y2="8" />
+                </svg>
+                <p>Preencha os dados exatamente como constam no seu título de eleitor ou CPF. O documento será
+                    processado após o envio.</p>
+            </div>
+
+            <!-- DADOS PESSOAIS -->
+            <div class="card">
+                <div class="section-label">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                    </svg>
+                    Dados Pessoais
+                </div>
+
+                <div class="field">
+                    <label for="nome">Nome completo <span class="req">*</span></label>
+                    <input type="text" id="nome" placeholder="Ex: João da Silva Souza" autocomplete="name" />
+                    <div class="err" id="err-nome">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="12" y1="8" x2="12" y2="12" />
+                            <line x1="12" y1="16" x2="12.01" y2="16" />
+                        </svg>
+                        Informe o nome completo.
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="field">
+                        <label for="cpf">CPF <span class="req">*</span></label>
+                        <input type="text" id="cpf" placeholder="000.000.000-00" maxlength="14" autocomplete="off"
+                            inputmode="numeric" />
+                        <div class="err" id="err-cpf">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" />
+                                <line x1="12" y1="8" x2="12" y2="12" />
+                                <line x1="12" y1="16" x2="12.01" y2="16" />
+                            </svg>
+                            CPF inválido.
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="titulo">Título de Eleitor</label>
+                        <input type="text" id="titulo" placeholder="0000 0000 0000" maxlength="15"
+                            inputmode="numeric" />
+                        <div class="field-hint">Opcional</div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="nasc">Data de nascimento <span class="req">*</span></label>
+                    <input type="date" id="nasc" />
+                    <div class="err" id="err-nasc">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="12" y1="8" x2="12" y2="12" />
+                            <line x1="12" y1="16" x2="12.01" y2="16" />
+                        </svg>
+                        Informe a data de nascimento.
+                    </div>
+                </div>
+            </div>
+
+            <!-- FILIAÇÃO -->
+            <div class="card">
+                <div class="section-label">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                    Filiação
+                </div>
+
+                <div class="fil-label">Quais filiações deseja informar? <span class="req">*</span></div>
+
+                <div class="fil-tabs">
+                    <button class="fil-tab" id="tab-pai" onclick="setFil('pai')" type="button">
+                        <span class="tab-icon">👨</span>
+                        Somente pai
+                    </button>
+                    <button class="fil-tab" id="tab-mae" onclick="setFil('mae')" type="button">
+                        <span class="tab-icon">👩</span>
+                        Somente mãe
+                    </button>
+                    <button class="fil-tab" id="tab-ambos" onclick="setFil('ambos')" type="button">
+                        <span class="tab-icon">👨‍👩‍👦</span>
+                        Ambos
+                    </button>
+                </div>
+
+                <div class="err" id="err-fil" style="margin-top:-6px; margin-bottom:14px;">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    Selecione uma opção de filiação.
+                </div>
+
+                <div class="fil-fields" id="fields-pai">
+                    <div class="fil-badge">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                            <circle cx="12" cy="7" r="4" />
+                        </svg>
+                        Filiação Paterna
+                    </div>
+                    <div class="field" style="margin-bottom:0;">
+                        <label for="pai">Nome do pai <span class="req">*</span></label>
+                        <input type="text" id="pai" placeholder="Nome completo do pai" />
+                        <div class="err" id="err-pai">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" />
+                                <line x1="12" y1="8" x2="12" y2="12" />
+                                <line x1="12" y1="16" x2="12.01" y2="16" />
+                            </svg>
+                            Informe o nome do pai.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fil-fields" id="fields-mae">
+                    <div class="fil-badge">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                            <circle cx="12" cy="7" r="4" />
+                        </svg>
+                        Filiação Materna
+                    </div>
+                    <div class="field" style="margin-bottom:0;">
+                        <label for="mae">Nome da mãe <span class="req">*</span></label>
+                        <input type="text" id="mae" placeholder="Nome completo da mãe" />
+                        <div class="err" id="err-mae">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" />
+                                <line x1="12" y1="8" x2="12" y2="12" />
+                                <line x1="12" y1="16" x2="12.01" y2="16" />
+                            </svg>
+                            Informe o nome da mãe.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUBMIT -->
+            <div class="actions">
+                <button class="btn-submit" id="btnSubmit" onclick="handleSubmit()" type="button">
+                    <svg id="btnIcon" viewBox="0 0 24 24">
+                        <path d="M22 2L11 13" />
+                        <path d="M22 2L15 22 11 13 2 9l20-7z" />
+                    </svg>
+                    <div class="spinner" id="spinner"></div>
+                    <span id="btnText">Solicitar Certidão</span>
+                </button>
+                <div class="security-note">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                    </svg>
+                    Seus dados são criptografados e protegidos
+                </div>
+            </div>
+
+            <div class="footer">
+                <p>© 2025 <span>Souza Conecta</span> — Vagas e Serviços · Todos os direitos reservados</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SUCCESS PAGE -->
     <div id="successPage">
-        <div class="success-card">
-            <div class="success-icon">
-                <svg viewBox="0 0 24 24">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                </svg>
-            </div>
-            <h2>Solicitação enviada!</h2>
-            <p>Seus dados foram recebidos com sucesso.<br>A <strong>Certidão de Quitação Eleitoral</strong> será
-                processada e o resultado enviado em breve.</p>
-
-            <div class="protocol-badge">
-                <svg viewBox="0 0 24 24">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                    <polyline points="14 2 14 8 20 8" />
-                </svg>
-                <span id="protocolNum">—</span>
-            </div>
-
-            <div class="success-info">
-                <div class="success-info-item">
+        <div class="body-wrap" style="padding-top:2rem;">
+            <div class="success-card">
+                <div class="success-icon-wrap">
                     <svg viewBox="0 0 24 24">
                         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
                         <polyline points="22 4 12 14.01 9 11.01" />
                     </svg>
-                    Dados salvos na planilha do Google Sheets
                 </div>
-                <div class="success-info-item">
+                <h2>Solicitação Enviada!</h2>
+                <p>Seus dados foram recebidos com sucesso.<br><strong>Certidão de Quitação Eleitoral</strong> será
+                    processada em breve.</p>
+
+                <div class="protocol-badge">
                     <svg viewBox="0 0 24 24">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
                     </svg>
-                    Notificação enviada para eliedsoalves@gmail.com
+                    <span id="protocolNum">—</span>
                 </div>
+
+                <div class="success-checks">
+                    <div class="check-item">
+                        <div class="check-icon"><svg viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg></div>
+                        Dados salvos na planilha Google Sheets
+                    </div>
+                    <div class="check-item">
+                        <div class="check-icon"><svg viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg></div>
+                        Notificação enviada para eliedsoalves@gmail.com
+                    </div>
+                </div>
+
+                <button class="btn-reset" onclick="reset()" type="button">+ Nova Solicitação</button>
             </div>
 
-            <br>
-            <button class="btn-reset" onclick="reset()" type="button">+ Nova solicitação</button>
+            <div class="footer">
+                <p>© 2025 <span>Souza Conecta</span> — Vagas e Serviços · Todos os direitos reservados</p>
+            </div>
         </div>
     </div>
 
@@ -846,9 +1048,9 @@
         }
 
         function showErr(id, show) { document.getElementById(id).style.display = show ? 'flex' : 'none'; }
-        function markInvalid(id, invalid) {
+        function markInvalid(id, inv) {
             const el = document.getElementById(id);
-            if (el) invalid ? el.classList.add('invalid') : el.classList.remove('invalid');
+            if (el) inv ? el.classList.add('invalid') : el.classList.remove('invalid');
         }
         function showToast(msg) {
             const t = document.getElementById('toast');
@@ -857,27 +1059,23 @@
             setTimeout(() => t.classList.remove('show'), 3500);
         }
         function setLoading(on) {
-            const btn = document.getElementById('btnSubmit');
+            document.getElementById('btnSubmit').disabled = on;
             document.getElementById('btnIcon').style.display = on ? 'none' : 'block';
             document.getElementById('spinner').style.display = on ? 'block' : 'none';
             document.getElementById('btnText').textContent = on ? 'Enviando...' : 'Solicitar Certidão';
-            btn.disabled = on;
         }
 
         function validateCPF(cpf) {
             cpf = cpf.replace(/\D/g, '');
-            if (cpf.length !== 11) return false;
-            if (/^(\d)\1+$/.test(cpf)) return false;
-            let sum = 0;
-            for (let i = 0; i < 9; i++) sum += parseInt(cpf[i]) * (10 - i);
-            let r = (sum * 10) % 11;
-            if (r === 10 || r === 11) r = 0;
-            if (r !== parseInt(cpf[9])) return false;
-            sum = 0;
-            for (let i = 0; i < 10; i++) sum += parseInt(cpf[i]) * (11 - i);
-            r = (sum * 10) % 11;
-            if (r === 10 || r === 11) r = 0;
-            return r === parseInt(cpf[10]);
+            if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
+            let s = 0, r;
+            for (let i = 0; i < 9; i++) s += +cpf[i] * (10 - i);
+            r = (s * 10) % 11; if (r >= 10) r = 0;
+            if (r !== +cpf[9]) return false;
+            s = 0;
+            for (let i = 0; i < 10; i++) s += +cpf[i] * (11 - i);
+            r = (s * 10) % 11; if (r >= 10) r = 0;
+            return r === +cpf[10];
         }
 
         function formatDate(val) {
@@ -888,7 +1086,6 @@
 
         async function handleSubmit() {
             let ok = true;
-
             const nome = document.getElementById('nome').value.trim();
             const cpf = document.getElementById('cpf').value;
             const titulo = document.getElementById('titulo').value.trim();
@@ -897,62 +1094,42 @@
             const mae = document.getElementById('mae').value.trim();
 
             const nomeOk = nome.length >= 3;
-            showErr('err-nome', !nomeOk); markInvalid('nome', !nomeOk);
-            if (!nomeOk) ok = false;
+            showErr('err-nome', !nomeOk); markInvalid('nome', !nomeOk); if (!nomeOk) ok = false;
 
             const cpfOk = validateCPF(cpf);
-            showErr('err-cpf', !cpfOk); markInvalid('cpf', !cpfOk);
-            if (!cpfOk) ok = false;
+            showErr('err-cpf', !cpfOk); markInvalid('cpf', !cpfOk); if (!cpfOk) ok = false;
 
-            const nascOk = !!nasc;
-            showErr('err-nasc', !nascOk); markInvalid('nasc', !nascOk);
-            if (!nascOk) ok = false;
+            showErr('err-nasc', !nasc); markInvalid('nasc', !nasc); if (!nasc) ok = false;
 
             if (!filMode) {
                 showErr('err-fil', true); ok = false;
             } else {
                 showErr('err-fil', false);
-                if ((filMode === 'pai' || filMode === 'ambos') && !pai) {
-                    showErr('err-pai', true); markInvalid('pai', true); ok = false;
-                } else { showErr('err-pai', false); markInvalid('pai', false); }
-                if ((filMode === 'mae' || filMode === 'ambos') && !mae) {
-                    showErr('err-mae', true); markInvalid('mae', true); ok = false;
-                } else { showErr('err-mae', false); markInvalid('mae', false); }
+                if ((filMode === 'pai' || filMode === 'ambos') && !pai) { showErr('err-pai', true); markInvalid('pai', true); ok = false; }
+                else { showErr('err-pai', false); markInvalid('pai', false); }
+                if ((filMode === 'mae' || filMode === 'ambos') && !mae) { showErr('err-mae', true); markInvalid('mae', true); ok = false; }
+                else { showErr('err-mae', false); markInvalid('mae', false); }
             }
 
             if (!ok) return;
-
             setLoading(true);
 
             const filLabel = { pai: 'Somente pai', mae: 'Somente mãe', ambos: 'Ambos' }[filMode];
             const proto = 'QE-' + Date.now().toString().slice(-8).toUpperCase();
-
-            const payload = {
-                nome,
-                cpf,
-                titulo: titulo || '—',
-                nascimento: formatDate(nasc),
-                filiacao: filLabel,
-                nomePai: pai || '—',
-                nomeMae: mae || '—',
-                protocolo: proto
-            };
 
             try {
                 await fetch(SCRIPT_URL, {
                     method: 'POST',
                     mode: 'no-cors',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
+                    body: JSON.stringify({ nome, cpf, titulo: titulo || '—', nascimento: formatDate(nasc), filiacao: filLabel, nomePai: pai || '—', nomeMae: mae || '—', protocolo: proto })
                 });
-
                 document.getElementById('protocolNum').textContent = 'Protocolo: ' + proto;
                 document.getElementById('formPage').style.display = 'none';
                 document.getElementById('successPage').style.display = 'block';
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-
-            } catch (err) {
-                showToast('⚠️ Erro ao enviar. Verifique sua conexão e tente novamente.');
+            } catch (e) {
+                showToast('⚠️ Erro ao enviar. Verifique sua conexão.');
             } finally {
                 setLoading(false);
             }
